@@ -1,0 +1,742 @@
+﻿/*html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	border: 0;
+	overflow: hidden; 
+	display: block;
+    -ms-content-zooming: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+	font-family: arial;
+    font-size: 100%; 
+	margin: 0;
+	padding: 0;
+}*/
+
+#viewerCanvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /*!*float:left;!*设置浮动，实现多列效果，div+Css布局中很重要的*! *!;*/
+}
+
+#contentbg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /*!*float:left;!*设置浮动，实现多列效果，div+Css布局中很重要的*! *!;*/
+}
+
+#Content-Right {
+    height: 80%;
+    width: 20%;
+    /*margin:0px;设置元素跟其他元素的距离为20像素*/
+    float: right; /*设置浮动，实现多列效果，div+Css布局中很重要的*/
+    background: rgb(221,236,255);
+}
+
+/* styles that used to be in Common, but have since been deleted
+    these styles are still used somewhere else, and were just not defined
+   these should either be cleaned up if they are no longer needed
+*/
+/*
+.no-text-selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+*/
+
+.dropdown-menu {
+    min-width: 48px;
+}
+
+/*.btn {*/
+    /*padding: 5px;*/
+    /*margin: 0;*/
+    /*line-height: 1.0;*/
+    /*float: left;*/
+/*}*/
+
+.toolbarContent {
+    position: fixed;
+    left: 50%;
+    bottom: 5%;
+    margin-left: -260px;
+    z-index: 9999;
+}
+
+    .toolbarContent .dropup {
+        float: left;
+    }
+
+    .toolbarContent .btn-default {
+        background: #393a3c;
+        color: #fff;
+        border: 1px #F8F8F8 solid;
+        margin-right: 5px;
+        text-shadow: none;
+    }
+
+        .toolbarContent.btn-default:focus,
+        .toolbarContent .btn-default:hover {
+            background-position: 0 -40px;
+        }
+
+    .toolbarContent .dropdown-menu {
+        background: rgba(34, 34, 34, 0.9);
+        color: #fff;
+    }
+
+        .toolbarContent .dropdown-menu li a {
+            color: #fff;
+        }
+
+            .toolbarContent .dropdown-menu li a:hover {
+                background: #01a1d5;
+            }
+
+        .toolbarContent .dropdown-menu > li > a {
+            padding: 3px 10px;
+        }
+
+.btnMore {
+    float: left;
+}
+
+    .btnMore dl,
+    .btnMore dt,
+    .btnMore dd {
+        float: left;
+    }
+
+    .btnMore dt {
+        display: none;
+    }
+
+    .btnMore dl {
+        margin-bottom: 0;
+    }
+
+.colorPicker {
+    z-index: 9999;
+    position: fixed;
+    right: 25%;
+    top: 45%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+    .colorPicker .close-thik {
+        right: 0;
+        border-radius: 0 3px 0 0;
+    }
+
+    .colorPicker .sketch-picker {
+        box-shadow: none !important;
+    }
+
+@media screen and (max-width: 768px) {
+    .iconfont {
+        font-size: 28px;
+    }
+
+    .btnMore dt,
+    .btnMore dd {
+        float: left;
+        width: 40px;
+    }
+
+    .btnMore dt {
+        display: block;
+    }
+
+    .btnMore {
+        float: left;
+        width: 40px;
+        position: relative;
+    }
+
+        .btnMore dl {
+            overflow: hidden;
+        }
+
+        .btnMore dd {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+        }
+
+            .btnMore dd.btn-hide {
+                display: none;
+            }
+
+    .btn-group .btnMore .btn + .btn {
+        margin-left: 0;
+    }
+
+    .toolbarContent {
+        margin-left: -160px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .toolbarContent {
+        margin-left: -175px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .toolbarContent {
+        margin-left: -165px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .toolbarContent {
+        margin-left: -140px;
+    }
+}
+
+.doodleToolbar {
+    position: fixed;
+    right: 10%;
+    top: 10px;
+    z-index: 9999;
+}
+
+    .doodleToolbar .btn-default {
+        background: rgba(34, 34, 34, 0.8);
+        color: #fff;
+        border: 1px #ddd solid;
+        margin-right: 5px;
+        text-shadow: none;
+    }
+
+        .doodleToolbar.btn-default:focus,
+        .doodleToolbar .btn-default:hover {
+            background-position: 0 -40px;
+        }
+
+.doodleTextInput {
+    position: fixed;
+    right: 10%;
+    margin-right: -26px;
+    top: 60px;
+    z-index: 9999;
+}
+
+    .doodleTextInput .doodleTextInputGroup {
+        width: 265px;
+    }
+
+    .doodleTextInput input {
+        height: 40px;
+    }
+
+.SectionSlider {
+    position: absolute;
+    width: 315px;
+    height: 150px;
+    top: 10%;
+    right: 10%;
+    margin: auto;
+    z-index: 9999;
+    border-radius: 3px;
+    background: #bcbcbc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition-duration: 0.3s;
+    transition-property: width, height, top, right;
+}
+
+.controls-basic {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    right: 25px;
+}
+
+.psudo-basic {
+    background-color: white;
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+.SectionSlider .minimize {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    right: 25px;
+}
+
+    .SectionSlider .minimize:after {
+        background-color: white;
+        content: '';
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 10px;
+        left: calc(50% - 5px);
+        top: calc(50% + 4px);
+    }
+
+.SectionSlider .restore {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    right: 25px;
+}
+
+    .SectionSlider .restore:before {
+        background-color: white;
+        content: '';
+        display: block;
+        position: absolute;
+        height: 10px;
+        width: 2px;
+        left: calc(50% - 1px);
+        top: calc(50% - 5px);
+    }
+
+    .SectionSlider .restore:after {
+        background-color: white;
+        content: '';
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 10px;
+        left: calc(50% - 5px);
+        top: calc(50% - 1px);
+    }
+
+.section-slider-minimised {
+    transform: translate(0, 0) !important;
+    top: 0;
+    right: 0;
+    height: 25px;
+    width: 180px;
+    overflow: hidden;
+}
+
+.SectionSlider .header {
+    height: 25px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 3px;
+    background: #393a3c;
+    font-family: "微软雅黑", "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+    font-size: 13px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    cursor: move;
+}
+
+.SectionSlider .axis {
+    width: 226px;
+    margin: 28px auto 0 auto;
+}
+
+    .SectionSlider .axis .rc-slider {
+        margin-left: 10px;
+    }
+
+    .SectionSlider .axis span {
+        display: inline-block;
+        float: left;
+        margin-left: -36px;
+        margin-top: -6px;
+        font-family: "微软雅黑", "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+.SectionSlider .rc-slider-handle {
+    width: 20px;
+    height: 20px;
+    margin-top: -8px;
+    border: none;
+}
+
+.SectionSlider .Xaxis .rc-slider-track {
+    background-color: #0883ca;
+}
+
+.SectionSlider .Xaxis .rc-slider-handle {
+    background-color: #0883ca;
+}
+
+.SectionSlider .Yaxis .rc-slider-track {
+    background-color: #ffc000;
+}
+
+.SectionSlider .Yaxis .rc-slider-handle {
+    background-color: #ffc000;
+}
+
+.SectionSlider .Zaxis .rc-slider-track {
+    background-color: #05c4ab;
+}
+
+.SectionSlider .Zaxis .rc-slider-handle {
+    background-color: #05c4ab;
+}
+
+.lightShadowSwitch {
+    position: fixed;
+    width: 100px;
+    right: 10px;
+    top: 40%;
+    z-index: 9999;
+    border: 1px #000000 solid;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.modelTree .ztree {
+    position: relative;
+    max-height: 80vh;
+	//height: 300px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding-right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*background-color: rgba(155, 155, 155, 0.5);*/
+    background-color: rgba(191, 206, 225, 0.5);
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+
+.modelTree {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 20%;
+    left: 2%;
+    z-index: 9999;
+    border-radius: 3px;
+    /*修复树窗口缩小后还能在外围移动的bug*/
+    width: 230px;
+    height: 50px;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+/*
+*{
+	-webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}*/
+
+.modelTree2 .ztree {
+    position: relative;
+    max-height: 80vh;
+	//height: 300px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding-right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*background-color: rgba(155, 155, 155, 0.5);*/
+    background-color: rgba(191, 206, 225, 0.5);
+    width: 450px;
+    height: 543px;
+}
+
+.modelTree2 {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 40%;
+    left: 10%;
+    z-index: 9999;
+    border-radius: 3px;
+    visibility:hidden;
+}
+
+ .ztree {
+    position: relative;
+    max-height: 80vh;
+	//height: 300px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding-right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*background-color: rgba(155, 155, 155, 0.5);*/
+    background-color: rgba(191, 206, 225, 0.5);
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+
+.dockPane {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    z-index: 8;
+    border-radius: 3px; 
+	border:1px solid #000000;
+    /*修复树窗口缩小后还能在外围移动的bug*/
+    width:120px;
+    height: 40px;
+	opacity: 0.8;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+
+.viewSettings {
+    position: fixed;
+    right: 10%;
+    top: 10%;
+    z-index: 9999;
+    border-radius: 3px;
+    background-color: #bcbcbc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.settings-header2 {
+    font-family: "微软雅黑", "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+    font-size: 13px;
+    color: #e6d0bb;
+    text-align: center;
+    background-color: #233646;
+    padding-top: 3px;
+    height: 25px;
+    cursor: move;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+
+.settings-header {
+    font-family: "微软雅黑", "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+    font-size: 15px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #000000;
+    padding-top: 3px;
+    height: 25px;
+	width: 233px;
+    cursor: move;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+
+.viewSettings .currentSelectedColor {
+    border: 2px solid white;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    margin: -4px 18px;
+}
+
+.viewSettings .settings-row {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-grow: 0;
+    -webkit-flex-grow: 0;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 8px;
+    vertical-align: middle;
+}
+
+    .viewSettings .settings-row span {
+        font-family: "微软雅黑", "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+        font-size: 14px;
+    }
+
+.viewSettings .rc-switch-checked {
+    border: 1px solid #01a1d5;
+    background-color: #01a1d5;
+}
+
+    .viewSettings .rc-switch-checked:after {
+        left: 62px;
+    }
+
+.viewSettings .rc-switch {
+    width: 84px;
+}
+
+    .viewSettings .rc-switch .rc-switch-inner {
+        right: 10px;
+    }
+
+.viewSettings .render-quality .form-group {
+    display: inline-block;
+    margin-top: -6px;
+    margin-left: 31px;
+}
+
+.viewSettings .light-dropdown {
+    background-color: #393a3c;
+}
+
+.viewSettings .light-type-dropdown {
+    margin-left: 35px;
+    margin-top: -8px;
+}
+
+.viewSettings .light-position-dropdown {
+    margin-left: 35px;
+    margin-top: -7px;
+}
+
+.viewSettings .dropdown-menu li a:hover {
+    background: #01a1d5;
+}
+
+.viewSettings .light-type-dropdown img {
+    display: block;
+    margin: 0 auto;
+}
+
+.viewSettings .light-type-dropdown li div {
+    color: white;
+}
+
+.viewSettings .light-type-dropdown .dropdown-toggle {
+    background: #393a3c;
+    width: 38px;
+    height: 36px;
+}
+
+.viewSettings .light-position-dropdown .dropdown-toggle {
+    background: #393a3c;
+}
+
+.settings-row.lightPos > div > ul {
+    left: inherit;
+    right: 100%;
+    top: -2px;
+}
+
+.viewSettings .light-position-dropdown li {
+    display: inline;
+}
+
+    .viewSettings .light-position-dropdown li > a {
+        display: inline;
+        padding: 7px 2px;
+    }
+
+.viewSettings .light-type-dropdown .caret {
+    display: none;
+}
+
+.viewSettings .light-position-dropdown .caret {
+    display: none;
+}
+
+.settings-content {
+    display: flex;
+    flex-direction: column;
+}
+
+    .settings-content > .antialias-quality > span {
+        margin-top: -10px;
+        margin-left: 6px;
+    }
+
+    .settings-content > .antialias-quality > div {
+        margin-top: -16px;
+        margin-left: 40px;
+        height: 30px;
+    }
+
+.close-thik {
+    z-index: 9999;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background: url(/dx/viewer/static/images/close_10px.png) center no-repeat;
+}
+
+    .close-thik:hover {
+        background-color: #ff0000;
+    }
+
+.SectionSlider .close-thik {
+    top: 0;
+    right: 0;
+    border-radius: 0 3px 0 0;
+}
+
+.viewSettings .close-thik {
+    top: 0;
+    right: 0;
+    border-radius: 0 3px 0 0;
+}
+
+.RoamControlContainer {
+    position: fixed;
+    left: 10%;
+    bottom: calc(5% + 50px);
+    z-index: 9999;
+}
+
+.toolbar-hidden {
+    display: none;
+}
+
+.toolbar-highlight {
+    background: #01a1d5 !important;
+    color: #fff !important;
+}
+
+.clear-input-background-img {
+    position: absolute;
+    margin-left: -28px;
+    z-index: 9999;
+    margin-top: 11px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+div#rMenu {
+    position:absolute;
+    visibility:hidden;
+    top:0;
+    background-color: #757576;
+    text-align: left;
+    padding: 2px;z-index: 9999;
+    border: .0625em solid darkgray;
+	box-shadow: 0.625em 0.625em 1.25em 0.0625em rgba(177, 175, 173,0.75);
+}
+div#rMenu ul li{
+    margin: 1px 0;
+    padding: 0 5px;
+    cursor: pointer;
+    list-style: none outside none;
+    background-color: #DFDFDF;
+}

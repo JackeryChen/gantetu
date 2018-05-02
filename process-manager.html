@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Admin, Dashboard, Bootstrap"/>
+    <title>中亿丰BIM</title>
+
+    <link rel="stylesheet" href="./css/font-awesome/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="./material-design-iconic-font/dist/css/material-design-iconic-font.css"> -->
+    <!-- build:css .css/app.min.css -->
+    <link rel="stylesheet" href="./css/animate.css/animate.min.css">
+    <!-- <link rel="stylesheet" href="./fullcalendar/dist/fullcalendar.min.css"> -->
+    <!-- <link rel="stylesheet" href="./perfect-scrollbar/css/perfect-scrollbar.css"> -->
+    <link rel="stylesheet" href="./css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./toastr/toastr.css"/>
+    <link rel="stylesheet" href="./webuploader/webuploader.css">
+
+    <!-- <link rel="stylesheet" href=".css/core.css"> -->
+    <!-- <link rel="stylesheet" href=".css/app.css"> -->
+    <!--<link rel="stylesheet" href="./css/pages-index.css">-->
+
+    <!-- endbuild -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300"> -->
+
+    <!--gantt-->
+    <link rel="stylesheet" href="./gantt/platform.css" type="text/css">
+    <link rel="stylesheet" href="./gantt/libs/dateField/jquery.dateField.css" type="text/css">
+
+    <link rel="stylesheet" href="./gantt/gantt.css" type="text/css">
+    <link rel="stylesheet" href="./gantt/print.css" type="text/css" media="print">
+    <!--<script src="./breakpoints.js/dist/breakpoints.min.js"></script>-->
+    <link rel="stylesheet" href="./Datepicker/css/foundation-datepicker.css">
+    <link rel="stylesheet" href="./ztree/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="./ztree/css/zTreeStyle/ztreeCommon.css"/>
+    <link rel="stylesheet" href="./ztree/css/Common.css"/>
+    <link rel="stylesheet" href="./css/progress.css">
+    <!--<script>-->
+    <!--Breakpoints();-->
+    <!--</script>-->
+    <style>
+        html,body,
+        .app-main,
+        .app-main>div,
+        .app-content,
+        .app-content>div,
+        .progress_center,
+        .gantEditorTemplates{
+            height: 100%;
+            overflow: hidden;
+        }
+        #workSpace{
+            height: 86%!important;
+        }
+        html,
+        body{
+            overflow-y: hidden;
+        }
+        .modal-backdrop.in{
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="menubar-left menubar-unfold menubar-light theme-primary">
+<!--============= start main area -->
+
+<!-- APP MAIN ==========-->
+<main id="app-main" class="app-main">
+
+    <div class="wrap">
+        <section class="app-content">
+            <!-- search results -->
+            <!--相应内容-->
+            <div class="row">
+
+                <div class="progress_center">
+                    <!--##head布局-->
+                    <div class="progress_head">
+                        <!--<img src="./images/right.png" class="left1_img">-->
+                        <img src="./images/left.png" class="right1_img">
+                        <div class="text-center">
+                            项目进度
+                        </div>
+                    </div>
+                    <!--right布局-->
+                    <div class="progress_right">
+                        <div class="right_head">
+                            <img src="./images/right.png" class="aright">
+                        </div>
+                        <div class="right_center">
+                            <div class="right_top">
+                                <div class="row">
+                                    <div class="col-xs-4 left_text text-center">
+                                        <span class="top_text green">任务</span>
+                                    </div>
+                                    <div class="col-xs-4 right_text text-center">
+                                        <span class="top_text">核实</span>
+                                    </div>
+                                    <div class="col-xs-4 rr_text text-center">
+                                        <span class="top_text">关联模型</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="task_center" id="task_right">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                    <tr>
+                                        <td>序号</td>
+                                        <td v-if="task">
+                                            <span>{{id}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>优先级</td>
+                                        <td v-if="task">
+                                            <span>{{task.taskLeave}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>编号</td>
+                                        <td v-if="task">
+                                            <span>{{task.code}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>任务名称</td>
+                                        <td v-if="task">
+                                            <span>{{task.name}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>任务的类型</td>
+                                        <template v-if="task">
+                                            <td v-if="task.taskType ==0">
+                                                <span>一般任务</span>
+                                            </td>
+                                            <td v-else="">
+                                                <span>里程碑任务</span>
+                                            </td>
+                                        </template>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>计划开始时间</td>
+                                        <td v-if="task">
+                                            <span>{{task.start|formatTimeStart}}</span></td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>计划结束时间</td>
+                                        <td v-if="task">
+                                            <span>{{task.end|formatTimeEnd}}</span></td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>实际开始时间</td>
+                                        <td v-if="task">
+                                            <span>{{task.activeStartTime}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>实际结束时间</td>
+                                        <td v-if="task">
+                                            <span>{{task.activeFinishTime}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>工作日</td>
+                                        <td v-if="task">
+                                            <span>{{task.duration}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>计划状态</td>
+                                        <td v-if="task">
+                                            <span>{{task.planstatus}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>实际状态</td>
+                                        <td v-if="task">
+                                            <span>{{task.activeStatus}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>对比状态</td>
+                                        <td v-if="task">
+                                            <span>{{task.compareStatus}}</span>
+                                        </td>
+                                        <td v-else=""></td>
+                                    </tr>
+                                    <!-- <tr>
+                                         <td>负责群组</td>
+                                         <td v-if="task">
+                                             <span>{{task.chargeGroupName}}</span>
+                                         </td>
+                                         <td v-else=""></td>
+                                     </tr>
+                                     <tr>
+                                         <td>负责人</td>
+                                         <td v-if="task">
+                                             <span>{{task.chargeUserName}}</span>
+                                         </td>
+                                         <td v-else=""></td>
+                                     </tr>-->
+                                    </tbody>
+                                </table>
+                                <!--<div class="task_foot row">-->
+                                <!--&lt;!&ndash;<div class="col-xs-6">&ndash;&gt;-->
+                                <!--&lt;!&ndash;前置任务&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div id="addPreTask" class="pull-right" data-toggle="modal" data-target="#myModal_7" onclick="showMyMOdal7()">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<img src="./images/add_small.png">&ndash;&gt;-->
+                                <!--&lt;!&ndash;增加&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--</div>-->
+                                <!--<div v-for="p_task in prevTasks" class="row deletePreTask">-->
+                                <!--<div class="col-xs-4">{{p_task.processTaskNumber}}</div>-->
+                                <!--<div class="col-xs-6">{{p_task.taskName}}</div>-->
+                                <!--<div class="pull-right"><img src="./images/delete.png" class="img-responsive" onclick="deletePrevTask({{$index}})"></div>-->
+                                <!--</div>-->
+                            </div>
+                            <!--核实-->
+                            <div class="check_center">
+                                <div class="row row1">
+                                    <div class="col-xs-6">
+                                        核实记录
+                                    </div>
+                                    <div class="pull-right"
+                                         style="color: #666;cursor: pointer;" id="addCheckRecord">
+                                        <img src="./images/add_small.png">
+                                        添加
+                                    </div>
+                                </div>
+                                <div class="row row1" id="judge_permission">
+                                    <div class="col-xs-6">
+                                        上传文件
+                                    </div>
+
+                                    <div v-show="ok" class="pull-right" id="filePicker2">
+                                        <img src="./images/add_small.png">
+                                        添加
+                                    </div>
+                                   <!-- <div v-show="!ok" class="pull-right" onclick="alertMsg()">
+                                        <img src="./images/add_small.png">
+                                        添加
+                                    </div>-->
+
+                                </div>
+                                <!--<div class="files_box">-->
+                                <div class="row files_box" id="AccVue">
+                                    <div id="uploader2" class="col-xs-12" style="padding: 0;">
+                                        <div class="queueList2">
+                                            <div v-for="acc in accList" class="file-item thumbnail row original-files">
+                                                <!--<img class="typeImg" src="./images/default.png">-->
+                                                <span v-if="acc.fileType=='pdf'">
+                                    <img class="typeImg" src="./images/PDF.png">
+                                </span>
+                                                <span v-else>
+                                    <span v-if="acc.fileType=='doc' || acc.fileType=='docx' || acc.fileType=='docm'">
+                                        <img class="typeImg" src="./images/DOC.png">
+                                    </span>
+                                    <span v-else>
+                                        <span v-if="acc.fileType=='xls' || acc.fileType=='xlsx' || acc.fileType=='xlsm'">
+                                            <img class="typeImg" src="./images/EXCEL.png">
+                                        </span>
+                                        <span v-else>
+                                            <span v-if="acc.fileType=='ppt' || acc.fileType=='pptx' || acc.fileType=='pptm'">
+                                            <img class="typeImg" src="./images/PPT.png">
+                                            </span>
+                                            <span v-else>
+                                                 <span v-if="acc.fileType=='max' || acc.fileType=='fbx' || acc.fileType=='obj' || acc.fileType=='mlt' || acc.fileType=='rvt' || acc.fileType=='dwg'">
+                                                <img class="typeImg" src="./images/dwg.png">
+                                                </span>
+                                                <span v-else>
+                                                     <span v-if="acc.fileType=='jpg' || acc.fileType=='jpeg' || acc.fileType=='png' || acc.fileType=='gif' || acc.fileType=='rvt' || acc.fileType=='bmp'">
+                                                        <img class="typeImg"
+                                                             :src="'http://192.168.3.31:10091/zyfbim/TaskProcess/getPicBy/'+acc.processAccessoryId"
+                                                             onerror="this.src='./images/default.png'">
+                                                    </span>
+                                                    <span v-else>
+                                                        <img class="typeImg" src="./images/default.png">
+                                                    </span>
+
+                                                </span>
+
+                                             </span>
+
+                                        </span>
+                                    </span>
+
+                                </span>
+
+                                                <div class="info"
+                                                     style="margin-left: 40px;display: inline-block;position: absolute;right: 0px;">
+                                                    <div class="file_name color_3" style="width: 124.7px;" title="">
+                                                        {{acc.fleName}}
+                                                    </div>
+                                                    <span class="file_time color_9" style="margin-left: 10px;">{{acc.createTime|formatTime}}</span>
+                                                    <span class="pull-right">
+                                        <!--<img class="delImg" src="./images/delete.png" onclick="deleteAcc({{$index}})">-->
+                                                        <!--<img class="downImg" src="../img/EDIT/down.png" onclick="downloadAcc({{$index}})">-->
+                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--</div>-->
+                                </div>
+                                <!--</div>-->
+                            </div>
+                            <!--关联模型-->
+                            <div class="model_relactive" id="model_relactive">
+                                <div class="row row1">
+                                    <div class="col-xs-6">
+                                        模型关联
+                                    </div>
+                                    <div class="pull-right" style="color: #666;cursor: pointer;" id="addModel">
+                                        <img src="./images/add_small.png">
+                                        添加
+                                    </div>
+
+                                </div>
+                                <div class="row" v-for="item in list">
+                                    <div class="col-xs-8">{{item.name}}</div>
+                                    <div class="pull-right"><img src="./images/del.png" @click="delete($index)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="workSpace"
+                         style="padding:0px; overflow-y:auto; overflow-x:hidden;border:1px solid #e5e5e5;position:relative;margin:0 5px"></div>
+
+                    <div id="taZone" style="display:none;" class="noprint">
+
+               <textarea rows="8" cols="150" id="ta">
+
+                        {"tasks":[
+
+                        {"id":-1,"name":"Gantt editor","code":"","level":0,"status":"STATUS_ACTIVE","canWrite":true,"start":1396994400000,"duration":21,"end":1399672799999,"startIsMilestone":true,"endIsMilestone":false,"collapsed":false,"assigs":[],"hasChild":true}
+
+                        ,{"id":-2,"name":"coding","code":"","level":1,"status":"STATUS_ACTIVE","canWrite":true,"start":1396994400000,"duration":10,"end":1398203999999,"startIsMilestone":false,"endIsMilestone":false,"collapsed":false,"assigs":[],"description":"","progress":0,"hasChild":true}
+
+                        ,{"id":-3,"name":"gantt part","code":"","level":2,"status":"STATUS_ACTIVE","canWrite":true,"start":1396994400000,"duration":2,"end":1397167199999,"startIsMilestone":false,"endIsMilestone":false,"collapsed":false,"assigs":[],"depends":"","hasChild":false}
+
+                        ,{"id":-4,"name":"editor part","code":"","level":2,"status":"STATUS_SUSPENDED","canWrite":true,"start":1397167200000,"duration":4,"end":1397685599999,"startIsMilestone":false,"endIsMilestone":false,"collapsed":false,"assigs":[],"depends":"3","hasChild":false}
+
+                        ,{"id":-5,"name":"testing","code":"","level":1,"status":"STATUS_SUSPENDED","canWrite":true,"start":1398981600000,"duration":6,"end":1399672799999,"startIsMilestone":false,"endIsMilestone":false,"collapsed":false,"assigs":[],"depends":"2:5","description":"","progress":0,"hasChild":true}
+
+                        ,{"id":-6,"name":"test on safari","code":"","level":2,"status":"STATUS_SUSPENDED","canWrite":true,"start":1398981600000,"duration":2,"end":1399327199999,"startIsMilestone":false,"endIsMilestone":false,"collapsed":false,"assigs":[],"depends":"","hasChild":false}
+
+                        ,{"id":-7,"name":"test on ie","code":"","level":2,"status":"STATUS_SUSPENDED","canWrite":true,"start":1399327200000,"duration":3,"end":1399586399999,"startIsMilestone":false,"endIsMilestone":false,"collapsed":false,"assigs":[],"depends":"6","hasChild":false}
+
+                        ,{"id":-8,"name":"test on chrome","code":"","level":2,"status":"STATUS_SUSPENDED","canWrite":true,"start":1399327200000,"duration":2,"end":1399499999999,"startIsMilestone":false,"endIsMilestone":false,"collapsed":false,"assigs":[],"depends":"6","hasChild":false}
+
+                        ],"selectedRow":0,"canWrite":true,"canWriteOnParent":true}
+               </textarea>
+
+                        <button onclick="loadGanttFromServer();">load</button>
+
+                    </div>
+
+                    <form id="gimmeBack" style="display:none;" action="../gimmeBack.jsp" method="post" target="_blank">
+                        <input type="hidden" name="prj" id="gimBaPrj">
+                    </form>
+
+
+                    <div id="gantEditorTemplates" style="display:none;">
+
+                        <div class="__template__" type="GANTBUTTONS">
+
+                            <div class="ganttButtonBar noprint">
+                                <div class="buttons" id="deptM">
+                                    <button class="btn add_btn" type="button"
+                                            title="新增任务" onclick="showAddTask()">
+                                        <img src="./images/adding.png">
+                                    </button>
+                                    <button onclick="$('#workSpace').trigger('outdentCurrentTask.gantt');"
+                                            class="button textual"
+                                            title="升级任务" :disabled="sure">
+                                        <img src="./images/aleft.png">
+                                        <img src="./images/no_aleft.png" style="display: none;">
+                                    </button>
+
+                                    <button onclick="$('#workSpace').trigger('indentCurrentTask.gantt');"
+                                            class="button textual"
+                                            title="降级任务" :disabled="sure">
+                                        <img src="./images/aright.png">
+                                        <img src="./images/no_aright.png" style="display: none;">
+                                    </button>
+
+                                    <button onclick="$('#workSpace').trigger('moveUpCurrentTask.gantt');"
+                                            class="button textual upTask" title="向上移动" :disabled="sure">
+                                        <img src="./images/up.png">
+                                        <img src="./images/no_up.png" style="display: none;">
+                                    </button>
+
+                                    <button onclick="$('#workSpace').trigger('moveDownCurrentTask.gantt');"
+                                            class="button textual mr_30" title="向下移动" :disabled="sure">
+                                        <img src="./images/down.png">
+                                        <img src="./images/no_down.png" style="display: none;">
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-primary btn-lg myModal_3"
+                                            title="修改任务" onclick="showUpdateTask()">
+                                        <img src="./images/update.png">
+                                        <img src="./images/no_update.png" style="display: none;">
+                                    </button>
+
+                                    <button class="button textual del-example btn" title="删除">
+                                        <img src="./images/delete.png">
+                                        <img src="./images/no_delete.png" style="display: none;">
+                                    </button>
+                                    <button onclick="ge.gantt.showCriticalPath=!ge.gantt.showCriticalPath; ge.redraw();"
+                                            class="button textual mr_30" title="显示关键路径">
+                                        <img src="./images/bight.png">
+                                        <img src="./images/no_bight.png" style="display: none;">
+                                    </button>
+                                    <button onclick="$('#workSpace').trigger('zoomPlus.gantt');" class="button textual"
+                                            title="视图缩小">
+                                        <img src="./images/blowUp.png">
+                                        <img src="./images/no_blowUp.png" style="display: none;">
+                                    </button>
+                                    <button onclick="$('#workSpace').trigger('zoomMinus.gantt');"
+                                            class="button textual mr_30"
+                                            title="视图放大">
+                                        <img src="./images/blowDown.png">
+                                        <img src="./images/no_blowDown.png" style="display: none;">
+                                    </button>
+                                    <input type="text" class="search_input" id="qaq_search" onkeyup="queryfun()">
+                                    <!--<button class="btn search_btn mr_30">查询任务</button>-->
+                                    <button class="btn oneBtn" onclick="judgeTaskIsExits()">导入</button>
+                                    <button class='btn oneBtn export' onclick='downloadMppToExcel()'>导出</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="__template__" type="TASKSEDITHEAD"><!--
+
+  <table class="gdfTable" cellspacing="0" cellpadding="0">
+
+    <thead>
+
+    <tr style="height:40px">
+
+      <th class="gdfColHeader text-center" style="width:50px;">序号</th>
+
+      <th class="gdfColHeader text-center" style="width:70px;">优先级</th>
+
+      <th class="gdfColHeader gdfResizable" style="width:80px;">编号</th>
+
+      <th class="gdfColHeader gdfResizable" style="width:200px;">名称</th>
+      <th class="gdfColHeader gdfResizable" style="width:80px;">里程碑</th>
+
+      <th class="gdfColHeader gdfResizable" style="width:80px;">计划开始</th>
+      <th class="gdfColHeader gdfResizable" style="width:80px;">计划结束</th>
+
+      <th class="gdfColHeader gdfResizable" style="width:80px;">实际开始</th>
+      <th class="gdfColHeader gdfResizable" style="width:80px;">实际结束</th>
+
+      <th class="gdfColHeader gdfResizable" style="width:80px;">工作日</th>
+
+      <th class="gdfColHeader gdfResizable" style="width:80px;">计划状态</th>
+
+      <th class="gdfColHeader gdfResizable" style="width:80px;">实际状态</th>
+      <th class="gdfColHeader gdfResizable" style="width:80px;">对比状态</th>
+
+</th>
+    </tr>
+
+    </thead>
+
+  </table>
+
+  --></div>
+
+                        <div class="__template__" type="TASKROW"><!--
+
+  <tr taskId="(#=obj.id#)" class="taskEditRow" level="(#=level#)">
+
+    <td class="gdfCell text-center" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span>
+    </td>
+
+    <td class="gdfCell noClip" align="center">(#=obj.taskLeave#)</td>         //优先级
+    <td class="gdfCell"><input type="text" disabled name="code" value="(#=obj.code?obj.code:''#)"></td>   //编号
+
+    <td class="gdfCell indentCell" style="padding-left:(#=obj.level*10#)px;">
+      <div class="(#=obj.isParent()?'exp-controller expcoll exp':'exp-controller'#)" align="center"></div>
+      <input type="text" name="name" disabled value="(#=obj.name#)">                 //任务的名字
+    </td>
+    <td class="gdfCell"><input type="text" disabled name="" value="(#=obj.taskType=='0'?'一般任务':'里程碑任务'#)"></td>           //里程碑
+
+    <td class="gdfCell"><input type="text" disabled name="start"  value="" class="date"></td>    //计划开始时间
+
+    <td class="gdfCell"><input type="text" disabled name="end" value="" class="date"></td>       //计划结束时间
+
+    <td class="gdfCell"><input type="text" disabled name="ActStart"  value="(#=obj.activeStartTime#)"></td>              //实际开始时间
+
+    <td class="gdfCell"><input type="text" disabled name="ActEnd"    value="(#=obj.activeFinishTime#)"></td>              //实际结束时间
+
+    <td class="gdfCell"><input type="text" disabled name="duration" value="(#=obj.duration#)"></td>   //工作日
+
+    <td class="gdfCell"><input type="text" disabled name="planstatus" value="(#=obj.planstatus#)"></td>      //计划状态
+
+    <td class="gdfCell"><input type="text" disabled name="ActStatus"  value="(#=obj.activeStatus#)" ></td>   //实际状态
+
+    <td class="gdfCell CompStatus"><input disabled type="text" disabled name="CompStatus" value="(#=obj.compareStatus#)"></td>       //对比状态
+
+   ## <td class="gdfCell"><input type="text" name="depends" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
+   ## <td class="gdfCell ResponsibleGroup" id="(#=obj.chargeGroup#)">(#=obj.chargeGroupName#)</td>        //负责群组
+   ## <td class="gdfCell" id="(#=obj.chargeUser#)">(#=obj.chargeUserName#)</td>    //负责人
+
+  </tr>
+
+  --></div>
+
+
+                        <div class="__template__" type="TASKEMPTYROW"><!--
+
+  <tr class="taskEditRow emptyRow" >
+
+    <th class="gdfCell" align="right"></th>
+
+    <td class="gdfCell noClip" align="center"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+    <td class="gdfCell"></td>
+
+  </tr>
+
+  --></div>
+
+
+                        <div class="__template__" type="TASKBAR"><!--
+
+  <div class="taskBox taskBoxDiv" taskId="(#=obj.id#)" >
+
+    <div class="layout (#=obj.hasExternalDep?'extDep':''#)">
+
+      <div class="taskStatus" status="(#=obj.status#)"></div>
+
+      <div class="taskProgress" style="width:(#=obj.progress>100?100:obj.progress#)%; background-color:(#=obj.progress>100?'red':'rgb(153,255,51);'#);"></div>
+
+      <div class="milestone (#=obj.startIsMilestone?'active':''#)" ></div>
+
+      <div class="taskLabel"></div>
+
+      <div class="milestone end (#=obj.endIsMilestone?'active':''#)" ></div>
+
+    </div>
+
+  </div>
+
+  --></div>
+
+
+                        <div class="__template__" type="CHANGE_STATUS"><!--
+
+    <div class="taskStatusBox">
+
+      <div class="taskStatus cvcColorSquare" status="STATUS_ACTIVE" title="active"></div>
+
+      <div class="taskStatus cvcColorSquare" status="STATUS_DONE" title="completed"></div>
+
+      <div class="taskStatus cvcColorSquare" status="STATUS_FAILED" title="failed"></div>
+
+      <div class="taskStatus cvcColorSquare" status="STATUS_SUSPENDED" title="suspended"></div>
+
+      <div class="taskStatus cvcColorSquare" status="STATUS_UNDEFINED" title="undefined"></div>
+
+    </div>
+
+  --></div>
+
+
+                        <div class="__template__" type="TASK_EDITOR"><!--
+
+  <div class="ganttTaskEditor">
+
+  <table width="100%">
+
+    <tr>
+
+      <td>
+
+        <table cellpadding="5">
+
+          <tr>
+
+            <td><label for="code">code/short name</label><br><input type="text" name="code" id="code" value="" class="formElements"></td>
+
+           </tr><tr>
+
+            <td><label for="name">name</label><br><input type="text" name="name" id="name" value=""  size="35" class="formElements"></td>
+
+          </tr>
+
+          <tr></tr>
+
+            <td>
+
+              <label for="description">description</label><br>
+
+              <textarea rows="5" cols="30" id="description" name="description" class="formElements"></textarea>
+
+            </td>
+
+          </tr>
+
+        </table>
+
+      </td>
+
+      <td valign="top">
+
+        <table cellpadding="5">
+
+          <tr>
+
+          <td colspan="2"><label for="status">status</label><br><div id="status" class="taskStatus" status=""></div></td>
+
+          <tr>
+
+          <td colspan="2"><label for="progress">progress</label><br><input type="text" name="progress" id="progress" value="" size="3" class="formElements"></td>
+
+          </tr>
+
+          <tr>
+
+          <td><label for="start">start</label><br><input type="text" name="start" id="start"  value="" class="date" size="10" class="formElements"><input type="checkbox" id="startIsMilestone"> </td>
+
+          <td rowspan="2" class="graph" style="padding-left:50px"><label for="duration">dur.</label><br><input type="text" name="duration" id="duration" value=""  size="5" class="formElements"></td>
+
+        </tr><tr>
+
+          <td><label for="end">end</label><br><input type="text" name="end" id="end" value="" class="date"  size="10" class="formElements"><input type="checkbox" id="endIsMilestone"></td>
+
+        </table>
+
+      </td>
+
+    </tr>
+
+    </table>
+
+
+
+  <h2>assignments</h2>
+
+  <table  cellspacing="1" cellpadding="0" width="100%" id="assigsTable">
+
+    <tr>
+
+      <th style="width:100px;">name</th>
+
+      <th style="width:70px;">role</th>
+
+      <th style="width:30px;">est.wklg.</th>
+
+      <th style="width:30px;" id="addAssig"><span class="teamworkIcon" style="cursor: pointer">+</span></th>
+
+    </tr>
+
+  </table>
+
+
+
+  <div style="text-align: right; padding-top: 20px"><button id="saveButton" class="button big">save</button></div>
+
+  </div>
+
+  --></div>
+
+
+                        <div class="__template__" type="ASSIGNMENT_ROW"><!--
+
+  <tr taskId="(#=obj.task.id#)" assigId="(#=obj.assig.id#)" class="assigEditRow" >
+
+    <td ><select name="resourceId"  class="formElements" (#=obj.assig.id.indexOf("tmp_")==0?"":"disabled"#) ></select></td>
+
+    <td ><select type="select" name="roleId"  class="formElements"></select></td>
+
+    <td ><input type="text" name="effort" value="(#=getMillisInHoursMinutes(obj.assig.effort)#)" size="5" class="formElements"></td>
+
+    <td align="center"><span class="teamworkIcon delAssig" style="cursor: pointer">d</span></td>
+
+  </tr>
+
+  --></div>
+
+
+                        <div class="__template__" type="RESOURCE_EDITOR"><!--
+
+  <div class="resourceEditor" style="padding: 5px;">
+
+
+
+    <h2>Project team</h2>
+
+    <table  cellspacing="1" cellpadding="0" width="100%" id="resourcesTable">
+
+      <tr>
+
+        <th style="width:100px;">name</th>
+
+        <th style="width:30px;" id="addResource"><span class="teamworkIcon" style="cursor: pointer">+</span></th>
+
+      </tr>
+
+    </table>
+
+
+
+    <div style="text-align: right; padding-top: 20px"><button id="resSaveButton" class="button big">save</button></div>
+
+  </div>
+
+  --></div>
+
+
+                        <div class="__template__" type="RESOURCE_ROW"><!--
+
+  <tr resId="(#=obj.id#)" class="resRow" >
+
+    <td ><input type="text" name="name" value="(#=obj.name#)" style="width:100%;" class="formElements"></td>
+
+    <td align="center"><span class="teamworkIcon delRes" style="cursor: pointer">d</span></td>
+
+  </tr>
+
+  --></div>
+
+                    </div>
+
+
+                    <!--//添加核实记录-->
+                    <div class="modal" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div><!--新插入的div包裹层-->
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <div class="modal-title" id="myModalLabel">
+                                            添加核实记录
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!--##添加核实记录-->
+                                        <div class="addCheck">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    核实比例
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="progress">
+                                                        <div class="text color_9" id="check_Num">0</div>
+                                                        <div class="progress_bg">
+                                                            <div class="progress_bar"></div>
+                                                        </div>
+                                                        <div class="progress_btn"></div>
+                                                        <div class="texts  color_9">
+                                                            <span class="span0">0</span>
+                                                            <span class="span25">25</span>
+                                                            <span class="span50">50</span>
+                                                            <span class="span75">75</span>
+                                                            <span class="span100">100</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row time_row">
+                                                <div class="col-xs-2">
+                                                    核实日期
+                                                </div>
+                                                <div class="col-xs-10">
+                                                    <img src="./images/time_icon.png" class="time_icon">
+                                                    <input type="text" class="form-control" id="checkTime">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-success">确定</button>
+                                        <button class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--## 新增任务-->
+                    <div class="modal" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div><!--新插入的div包裹层-->
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <div class="modal-title" id="myModalLabel">
+                                            新增任务
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="progress_addTask color_6">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <span class="left_text">上级节点</span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <!--<select>-->
+                                                    <!--<option>总工期</option>-->
+                                                    <!--<option>默认项目（创建根任务）</option>-->
+                                                    <!--</select>-->
+                                                    <span class="last_name">总工期</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <span class="red">*</span>任务名称
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <input type="text" class="form-control add_name"
+                                                           placeholder="输入新增任务名称">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <span class="left_text">任务类型</span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <select name="taskType" class="typeSel" onchange="selectType()">
+                                                        <option value="0" selected="selected">一般任务</option>
+                                                        <option value="1">里程碑任务</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <span class="left_text">优先级</span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <select name="taskClass" class="classSel" onchange="selectLevel()">
+                                                        <option value="0" selected="selected" disabled="disabled">请选择
+                                                        </option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--<div class="row" id="organizationVue">-->
+                                            <!--<div class="col-xs-3">-->
+                                            <!--<span class="left_text">负责群组</span>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-xs-9">-->
+                                            <!--<select name="taskGroup" class="groupSel" onchange="getPeople()">-->
+                                            <!--&lt;!&ndash;<option value="0" selected="selected" disabled="disabled">请选择</option>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option value="1">默认群组</option>&ndash;&gt;-->
+                                            <!--<template v-for="org in organizationList">-->
+                                            <!--<option value="{{org.organizationId}}">{{org.organizationName}}-->
+                                            <!--</option>-->
+                                            <!--</template>-->
+                                            <!--</select>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="row" id="peopleVue">-->
+                                            <!--<div class="col-xs-3">-->
+                                            <!--<span class="left_text">负责人</span>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-xs-9">-->
+                                            <!--&lt;!&ndash;<select name="taskPerson" class="personSel" onchange="selectPeople()">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;&lt;!&ndash;<option value="0" selected="selected" disabled="disabled">请选择</option>&ndash;&gt;&ndash;&gt;-->
+                                            <!--&lt;!&ndash;&lt;!&ndash;<option value="1">黎明</option>&ndash;&gt;&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<template v-for="user in userList">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option v-if="user.userName && user.userName!=''"&ndash;&gt;-->
+                                            <!--&lt;!&ndash;value="{{user.userId}}">{{user.userName}}&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option v-else value="{{user.userId}}">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<span v-if="user.phone && user.phone!=''">{{user.phone}}</span>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<span v-else>{{user.email}}</span>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</template>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                            <!--<input type="text" class="form-control" placeholder="输入负责人名称">-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                            <div class="row time_row">
+                                                <div class="col-xs-3">
+                                                    <span class="red">*</span>计划开始时间
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <img src="./images/time_icon.png" class="time_icon">
+                                                    <input type="text" class="form-control datetime" id="datetimeStart">
+                                                </div>
+                                            </div>
+                                            <div class="row time_row">
+                                                <div class="col-xs-3">
+                                                    <span class="red">*</span>计划结束时间
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <img src="./images/time_icon.png" class="time_icon">
+                                                    <input type="text" class="form-control datetime" id="datetimeEnd">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btnSuccess">确定</button>
+                                        <button class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--## 修改任务-->
+                    <div class="modal" id="myModal_3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div><!--新插入的div包裹层-->
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <div class="modal-title" id="myModalLabel">
+                                            修改任务
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="progress_updateTask color_6">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <span class="left_text">上级节点</span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <span class="lastUpdate_name"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <span class="red">*</span>任务名称
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <input type="text" class="form-control update_name">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <span class="left_text">任务类型</span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <select name="taskType" class="typeSel_update">
+                                                        <option value="0" selected="selected">一般任务</option>
+                                                        <option value="1">里程碑任务</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <span class="left_text">优先级</span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <select name="taskClass" class="classSel_update">
+                                                        <option value="0" selected="selected" disabled="disabled">请选择
+                                                        </option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--<div class="row" id="organizationVue2">-->
+                                            <!--<div class="col-xs-3">-->
+                                            <!--<span class="left_text">负责群组</span>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-xs-9">-->
+                                            <!--<select name="taskGroup" class="groupSel_update" onchange="getPeople2()">-->
+                                            <!--<template v-for="org in organizationList2">-->
+                                            <!--<option value="{{org.organizationId}}">{{org.organizationName}}-->
+                                            <!--</option>-->
+                                            <!--</template>-->
+                                            <!--</select>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="row" id="peopleVue2">-->
+                                            <!--<div class="col-xs-3">-->
+                                            <!--<span class="left_text">负责人</span>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-xs-9">-->
+                                            <!--<select name="taskPerson" class="personSel_update" onchange="selectPeople2()">-->
+                                            <!--<template v-for="user in userList2">-->
+                                            <!--<option v-if="user.userName && user.userName!=''"-->
+                                            <!--value="{{user.userId}}">{{user.userName}}-->
+                                            <!--</option>-->
+                                            <!--<option v-else value="{{user.userId}}">-->
+                                            <!--<template v-if="user.phone && user.phone!=''">{{user.phone}}-->
+                                            <!--</template>-->
+                                            <!--<template v-else>{{user.email}}</template>-->
+                                            <!--</option>-->
+                                            <!--</template>-->
+                                            <!--</select>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                            <div class="row time_row">
+                                                <div class="col-xs-3">
+                                                    <span class="red">*</span>计划开始时间
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <img src="./images/time_icon.png" class="time_icon">
+                                                    <input type="text" class="form-control datetime"
+                                                           id="updatetimeStart">
+                                                </div>
+                                            </div>
+                                            <div class="row time_row">
+                                                <div class="col-xs-3">
+                                                    <span class="red">*</span>计划结束时间
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <img src="./images/time_icon.png" class="time_icon">
+                                                    <input type="text" class="form-control datetime" id="updatetimeEnd">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btnSuccess">确定</button>
+                                        <button class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--## 添加文件-->
+                    <div class="modal" id="myModal_4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div><!--新插入的div包裹层-->
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <div class="modal-title" id="myModalLabel">
+                                            导入 MS Project文件
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="progress_addFile">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="file_box text-center" id="uploader1">
+                                                        <div class="queueList">
+                                                            <div id="dndArea" class="placeholder">
+                                                                <!--##                        <div id="filePicker">添加文件</div>-->
+                                                                <!--##                        <p>或将照片拖到这里，单次最多可选10张</p>-->
+                                                                <div id="filePicker">
+                                                                    <!--##                            添加文件-->
+                                                                </div>
+                                                                <div class="default_img">
+                                                                    <img src="./images/msProject.png">
+                                                                </div>
+                                                                <div class="default_img after_img">
+                                                                    <img src="./images/up_img.png">
+                                                                </div>
+                                                                <div class="file_text color_9">
+                                                                    直接拖放要上传的文件至此区域即可
+                                                                </div>
+                                                                <!--用来存放item-->
+                                                                <div id="fileList" class="uploader-list"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-success uploadBtn">确定</button>
+                                        <button class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                                    </div>
+                                    <!--##                        <div class="modal-footer lookFile_footer" id="#myModal_5"  style="display: none;">-->
+                                    <!--##                            <button class="btn btn-success">确定</button>-->
+                                    <!--##                            <button class="btn btn-default">取消</button>-->
+                                    <!--##                        </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--## 浏览文件-->
+                    <div class="modal" id="myModal_5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div id="scailFile"><!--新插入的div包裹层-->
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <div class="modal-title" id="myModalLabel">
+                                            预览文件
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="lookFile_content">
+                                            <table class="table">
+                                                <div class="table_header"></div>
+                                                <thead>
+                                                <tr>
+                                                    <th class="gdfColHeader text-center" style="width:50px;">序号</th>
+                                                    <th class="gdfColHeader text-center" style="width:70px;">优先级</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">编号</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:200px;">名称</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">里程碑</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">计划开始</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">计划结束</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">实际开始</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">实际结束</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">工作日</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">计划状态</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">实际状态</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">对比状态</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:80px;">负责群组</th>
+                                                    <th class="gdfColHeader gdfResizable" style="width:160px;">负责人</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="item in items">
+                                                    <td style="width:50px;">{{$index+1}}</td>
+                                                    <td style="width:70px;">{{item.taskLeave}}</td>
+                                                    <td style="width:80px;">{{item.processTaskNumber}}</td>
+                                                    <td style="width:200px;">{{item.taskName}}</td>
+                                                    <td style="width:80px;">{{item.taskType}}</td>
+                                                    <td style="width:80px;">{{item.planStartTime |formatTime}}</td>
+                                                    <td style="width:80px;">{{item.planFinishTime|formatTime}}</td>
+                                                    <td style="width:80px;">{{item.activeStartTime|formatTime}}</td>
+                                                    <td style="width:80px;">{{item.activeFinishTime|formatTime}}</td>
+                                                    <td style="width:80px;">{{item.workTime}}</td>
+                                                    <td style="width:80px;">{{item.planStatus}}</td>
+                                                    <td style="width:80px;">{{item.activeStatus}}</td>
+                                                    <td style="width:80px;">{{item.compareStatus}}</td>
+                                                    <td style="width:80px;"></td>
+                                                    <td style="width:160px;"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-success">确定</button>
+                                        <button class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!--## 显示列弹框-->
+                <div class="modal" id="myModal_8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div><!--新插入的div包裹层-->
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <div class="modal-title" id="myModalLabel">
+                                        显示列
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="lists">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">序号</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">优先</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">编号</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">名称</span>
+                                            </div>
+                                            <!--##                                <div class="col-xs-3">-->
+                                            <!--##                                    <input type="checkbox" class="list_btn">-->
+                                            <!--##                                    <span class="list_name">任务组别</span>-->
+                                            <!--##                                </div>-->
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">里程碑</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">计划开始</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">计划结束</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">实际开始</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">实际结束</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">工作日</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">计划状态</span>
+                                            </div>
+
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">实际状态</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">对比状态</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">负责群组</span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <input type="checkbox" class="list_btn">
+                                                <span class="list_name">负责人</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success">确定</button>
+                                    <button class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal look-modal" id="myModal_9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div><!--新插入的div包裹层-->
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <div class="modal-title">选择关联</div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <ul class="nav nav-tabs">
+                                                <li role="presentation" class="related-element"><a href="javascript:void(0)">构件</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <!--左侧-->
+                                            <div class="col-sm-12">
+                                                <!--<el-input placeholder="输入关键字进行查找" v-model="filterText"></el-input>-->
+                                                <div class="borderStyle">
+                                                    <!--结构树-->
+                                                    <ul class="ztree modal-ztree" id="treeDemos" style="height: 218px;"></ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success" id="addConfirm">确定</button>
+                                    <button class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--##     导入进度任务文件-->
+                <!--<script src="${rc.contextPath}/js/sbim/addFile.js"></script>-->
+                <!--##     核实上传文件移到下面去了-->
+                <!--##    <script src="${rc.contextPath}/js/sbim/checkFile.js"></script>-->
+
+
+            </div>
+        </section><!-- #dash-content -->
+    </div><!-- .wrap -->
+</main>
+<!--========== END app main -->
+
+<!-- build:js .js/core.min.js -->
+<script src="./js/jquery.js"></script>
+<!--<script src="./jquery-ui/jquery-ui.min.js"></script>-->
+<!--<script src="./jQuery-Storage-API/jquery.storageapi.min.js"></script>-->
+<script src="./js/bootstrap.js"></script>
+<script src="./js/vue.js"></script>
+<!--<script src="./jquery-slimscroll/jquery.slimscroll.js"></script>-->
+<!--<script src="./perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>-->
+<!--<script src="./PACE/pace.min.js"></script>-->
+<!-- endbuild -->
+
+<!-- build:js .js/app.min.js -->
+<!--<script src=".js/library.js"></script>-->
+<!--<script src=".js/plugins.js"></script>-->
+<!--<script src=".js/app.js"></script>-->
+<!--endbuild-->
+<!--<script src="./moment/moment.js"></script>-->
+<!--<script src="./fullcalendar/dist/fullcalendar.min.js"></script>-->
+<!--<script src=".js/fullcalendar.js"></script>-->
+<!--gantt-->
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<!--<script src="./jquery-ui/jquery-ui.min.js "></script>-->
+<script src="./gantt/libs/jquery.livequery.min.js"></script>
+<script src="./layer/layer.js"></script>
+<script src="./toastr/toastr.min.js"></script>
+<script src="./layer/modals.js"></script>
+<script src="./gantt/libs/jquery.timers.js"></script>
+<script src="./ztree/jquery.ztree.all.min.js"></script>
+<script src="./gantt/libs/platform.js"></script>
+<script src="./gantt/libs/date.js"></script>
+<script src="./gantt/libs/i18nJs.js"></script>
+<script src="./gantt/libs/dateField/jquery.dateField.js"></script>
+<script src="./gantt/libs/JST/jquery.JST.js"></script>
+<link rel="stylesheet" type="text/css" href="./gantt/libs/jquery.svg.css">
+<script type="text/javascript" src="./gantt/libs/jquery.svg.min.js"></script>
+<!--In case of jquery 1.7-->
+<!--<script type="text/javascript" src="./gantt/libs/jquery.svgdom.pack.js"></script>-->
+<!--In case of jquery 1.8-->
+<script src="./Datepicker/js/foundation-datepicker.min.js"></script>
+<script src="./Datepicker/js/locales/foundation-datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="./gantt/libs/jquery.svgdom.1.8.js"></script>
+<script src="./gantt/ganttUtilities.js"></script>
+<script src="./gantt/ganttTask.js"></script>
+<script src="./gantt/ganttDrawerSVG.js"></script>
+<!--<script src="ganttDrawer.js"></script>-->
+<script src="./gantt/ganttGridEditor.js"></script>
+<script src="./gantt/ganttMaster.js"></script>
+<script src="./js/process-manage.js"></script>
+
+<script src="./webuploader/webuploader.js"></script>
+<!--<script src=".js/up-file/add_mpp.js"></script>-->
+
+
+<script src="./task_progress/getAllTaskProgress.js"></script>
+<script src="./task_progress/jsonToExcel.js"></script>
+<script src="./task_progress/taskProgress.js"></script>
+
+<!--##     导入进度任务文件-->
+<script src="./js/addFile.js"></script>
+<!--##     核实上传文件移到下面去了-->
+<script src="./js/checkFile.js"></script>
+<!--自己写的进度那块的代码-->
+</body>
+</html>

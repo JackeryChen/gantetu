@@ -1,0 +1,1063 @@
+
+.color_9 {
+    color: #9099A7;
+}
+
+.color_6 {
+    color: #666;
+}
+
+.color_3 {
+    color: #333;
+}
+
+.red {
+    color: #CC0000;
+    padding: 0 2px;
+}
+
+.modal .modal-header {
+    padding-left: 30px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.datepicker-dropdown:before {
+    border-bottom: 0px solid #ccc;
+}
+
+.datepicker .active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active {
+    background: #00A63C !important;
+}
+
+.datepicker table {
+    width: 100%;
+}
+
+.layui-layer {
+    width: 400px !important;
+}
+
+.day.active {
+    color: #fff !important;
+}
+
+/*addCheck*/
+.addCheck {
+    color: #666;
+}
+
+.addCheck .progress {
+    margin-top: 30px;
+    padding-bottom: 40px;
+    /*height: 6px;*/
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+
+.addCheck .progress-bar {
+    background: #00A63C;
+}
+
+/*.progress{margin:100px auto;}*/
+.progress_bg {
+    height: 6px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    margin: 10px 0;
+}
+
+.progress_bar {
+    background: #5FB878;
+    width: 0;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.progress_btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    position: absolute;
+    background: #fff;
+    left: 0px;
+    margin-left: 0px;
+    top: 20px;
+    cursor: pointer;
+    border: 1px #ddd solid;
+    box-sizing: border-box;
+    border: 1px solid #F7F8FB;
+    border-radius: 50%;
+}
+
+.progress_btn:hover {
+    border-color: #F7B824;
+}
+
+.addCheck .time_row {
+    margin-bottom: 30px;
+    height: 34px;
+    line-height: 34px;
+    position: relative;
+}
+
+.addCheck input {
+    padding-left: 40px;
+}
+
+.addCheck .time_icon {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+
+/*.datetimepicker table tr td.active.active,*/
+/*.datetimepicker table tr td.active:hover.active{*/
+/*background: #00A63C!important;*/
+/*}*/
+.addCheck .texts {
+    position: relative;
+}
+
+.addCheck .texts span {
+    position: absolute;
+}
+
+/*addTask*/
+.progress_addTask > .row {
+    margin-bottom: 20px;
+    height: 34px;
+    line-height: 34px;
+}
+
+.progress_addTask > .row > .col-xs-9 {
+    padding-left: 0;
+}
+
+.progress_addTask .left_text {
+    margin-left: 10px;
+}
+
+.progress_addTask .col-xs-9 > select {
+    width: 100%;
+    background: #F8F8F8;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    height: 34px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.progress_addTask .time_row {
+    position: relative;
+}
+
+.progress_addTask .time_icon {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+.progress_addTask .datetime {
+    padding-left: 40px;
+}
+
+/*updateTask*/
+.progress_updateTask > .row {
+    margin-bottom: 20px;
+    height: 34px;
+    line-height: 34px;
+}
+
+.progress_updateTask > .row > .col-xs-9 {
+    padding-left: 0;
+}
+
+.progress_updateTask .left_text {
+    margin-left: 10px;
+}
+
+.progress_updateTask .col-xs-9 > select {
+    width: 100%;
+    background: #F8F8F8;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    height: 34px;
+    padding-left: 10px;
+    color: #333;
+    font-size: 14px;
+}
+
+.progress_updateTask .time_row {
+    position: relative;
+}
+
+.progress_updateTask .time_icon {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+.progress_updateTask .datetime {
+    padding-left: 40px;
+}
+
+/*addFile*/
+.progress_addFile .file_box {
+    border: 1px dashed #E6E6E6;
+    /*padding: 30px 0 20px 0;*/
+    height: 214px;
+}
+
+.progress_addFile .webuploader-pick {
+    padding: 2px 15px;
+    color: #333;
+    background: #fff;
+    border: 1px solid #E6E6E6;
+    margin-top: 28px;
+}
+
+.thumbnail {
+    border: none;
+    padding: 0;
+}
+
+.default_img {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.after_img {
+    display: none;
+    margin-top: 80px;
+}
+
+ul.filelist {
+    list-style: none;
+    padding: 0;
+}
+
+/*lookFile*/
+/*.lookFile_content{*/
+    /*height: 267px;*/
+    /*width: 100%;*/
+    /*border: 1px solid #E6E6E6;*/
+    /*overflow-y: scroll;*/
+/*}*/
+/*addPrepose*/
+.p_18 {
+    padding-left: 15px;
+}
+
+.addPrepose {
+    color: #666666;
+    font-size: 12px;
+}
+
+.addPrepose .table {
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    margin-bottom: 0px;
+}
+
+.addPrepose .table > tbody > tr:hover {
+    background-color: #F2F2F2;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > thead > tr > td, .table > thead > tr > th,
+.table > thead:first-child > tr:first-child > th {
+    border: none;
+    font-size: 12px;
+    color: #666;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > thead > tr > td {
+    color: #999;
+}
+
+.table > tbody > tr > td.c_3 {
+    color: #333;
+}
+
+.table > tbody > tr > td.c_6 {
+    color: #666;
+    width: 310px;
+}
+
+.table > tbody > tr > td.c_6 .down_img {
+    padding: 3px;
+}
+
+.table > tbody > tr > td.c_6 .down_img:hover {
+    cursor: pointer;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #FAFAFA;
+}
+.prepose_table .table-striped > tbody > tr:nth-of-type(even) {
+    background-color: #FAFAFA;
+}
+.prepose_table .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+.prepose_table .table>thead>tr>th,.prepose_table .table>thead>tr>td{
+    padding: 8px 0;
+}
+.addPrepose .table .num_1 {
+    width: 80px;
+    text-align: center;
+}
+
+.prepose_table {
+    max-height: 290px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+.addPrepose .prepose_foot .f_left {
+    margin-right: 30px;
+}
+
+.addPrepose .prepose_foot select {
+    background: #F8F8F8;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    height: 40px;
+    width: 160px;
+    padding-left: 15px;
+    font-size: 12px;
+}
+
+.progress_head {
+    height: 50px;
+    line-height: 50px;
+    /*background: #EEEEEE;*/
+    font-size: 16px;
+    color: #333333;
+    font-family: PingFangSC-Regular;
+    position: relative;
+}
+
+#filePicker2 .webuploader-pick {
+    font-size: 12px;
+    color: #666666;
+    padding: 0;
+    background: #fff;
+}
+
+.progress_left {
+    position: fixed;
+    float: left;
+    width: 0;
+    background: #F7F7F7;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20);
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #666666;
+    height: 100%;
+    display: none;
+    position: absolute;
+    z-index: 99999;
+}
+
+.progress_left .left_head,
+.progress_right .right_head {
+    height: 50px;
+    border-bottom: 1px solid #E6E6E6;
+    position: relative;
+}
+
+.progress_left .ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.progress_left .ul li {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.progress_left .left_foot {
+    position: absolute;
+    width: 72%;
+    bottom: 130px;
+    left: 15px;
+}
+
+.progress_left .left_foot button {
+    background: #FFFFFF;
+    border: 1px solid #00A63C;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #00A63C;
+    width: 120px;
+}
+.progress_right .task_center{
+    overflow-y: auto;
+    height: 78%;
+    margin-top: 10px;
+    overflow-x: hidden;
+}
+
+.progress_center {
+    float: left;
+    left: 0;
+    right: 0;
+    /*left: 150px;*/
+    position: relative;
+    /*right: 220px;*/
+    background-color: white;
+    width: 100%;
+}
+
+.progress_left .aleft {
+    position: absolute;
+    right: 0;
+    top: 16px;
+    cursor: pointer;
+}
+
+.progress_head .left1_img {
+    position: absolute;
+    left: 0;
+    top: 16px;
+    cursor: pointer;
+}
+
+.right1_img {
+    position: absolute;
+    right: 0px;
+    top: 16px;
+    cursor: pointer;
+}
+
+.progress_right {
+    background: #F7F7F7;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20);
+    /*position: fixed;*/
+    float: right;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    font-size: 14px;
+    color: #666666;
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    width: 300px!important;
+}
+
+.progress_right .aright {
+    position: absolute;
+    left: 0px;
+    top: 16px;
+    cursor: pointer;
+}
+
+.progress_right .right_center {
+    padding: 10px;
+    height: 100%;
+}
+
+.progress_right .right_center .right_top {
+    border-bottom: 1px solid #E6E6E6;
+    padding: 10px;
+    padding-top: 0;
+}
+
+.progress_right .right_center .right_top .left_text,
+.progress_right .right_center .right_top .right_text,
+.progress_right .right_center .right_top .rr_text{
+    border-right: 1px solid #E6E6E6;
+}
+
+.progress_right .right_center .top_text {
+    color: #666666;
+    cursor: pointer;
+}
+
+.progress_right .right_center .top_text.green {
+    color: #00A63C;
+}
+
+.progress_right .right_center .task_center .table {
+    background: #fff;
+    /*margin-top: 10px;*/
+    font-size: 12px;
+    color: #666666;
+    table-layout: fixed;
+}
+
+.progress_right .right_center .task_center .table-bordered > tbody > tr > td:nth-child(1) {
+    width: 100px;
+}
+
+.progress_right .right_center .task_center .table-bordered > tbody > tr > td {
+    height: 36px;
+    border: 1px solid #F7F7F7;
+    text-align: center;
+}
+
+.progress_right .right_center .task_foot {
+    font-size: 12px;
+    color: #666;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 10px;
+}
+
+.progress_right .right_center .task_foot .pull-right {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.progress_right .check_center{
+    padding: 15px;
+    display: none;
+}
+.progress_right .model_relactive{
+    padding: 15px;
+    display: none;
+    height: 85%;
+    overflow-y: auto;
+}
+
+.progress_right .check_center > .row,
+.progress_right .model_relactive> .row{
+    padding: 10px;
+    font-size: 12px;
+    color: #999999;
+}
+
+.progress_right .check_center > .row1,
+.progress_right .model_relactive > .row1 {
+    background: #fff;
+}
+
+.progress_right .check_center > .row:nth-child(1),
+.progress_right .model_relactive > .row:nth-child(1){
+    margin-bottom: 20px;
+}
+
+#filePicker2 div:nth-child(2) {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/*##    日历*/
+.calNavBar {
+    color: #333;
+}
+
+.calBox {
+    display: block;
+    background: #fff;
+    border: 1px solid #efefef;
+}
+
+.calDay .calElement.today {
+    background: #fff;
+}
+
+.calDay .calElement.selected {
+    background: #00A63C !important;
+    color: #fff !important;
+}
+
+.calDay .calElement.selected.unMaY {
+    color: #000 !important;
+    background: #fff !important;
+}
+
+.calDay .calElement:hover {
+    background: #eee;
+}
+
+.calDay .calElement, .calDay .calDayHeader {
+    border: none;
+    color: #000;
+    background: #fff;
+}
+
+.calDay .calOutOfScope {
+    color: #999 !important;
+    background: #fff !important;
+}
+
+.calDay .calElement.unSel, .calDay .calElement.unSel.unMaY {
+    color: #999 !important;
+    background: #fff !important;
+}
+
+.progress_center .buttons .btn {
+    background: #fff;
+    padding: 0;
+}
+.progress_center .buttons .btn:focus,
+.progress_center .buttons .btn:active{
+    border-color:#fff!important;
+    box-shadow:unset;
+}
+.progress_center .buttons .oneBtn {
+    background: #188ae2;
+    border-radius: 3px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    padding: 4.5px 22px;
+    color: #fff;
+    /*margin-bottom: 12px;*/
+}
+
+/*.progress_center .buttons .export {*/
+    /*float: right !important;*/
+/*}*/
+
+.progress_center .buttons .export:hover {
+    background: #66AEE6 !important;
+}
+
+.progress_center .buttons .search_btn {
+    margin-top: -3px;
+    margin-left: 10px;
+    padding: 4.5px 16px;
+    font-size: 12px;
+    color: #FFFFFF;
+    background: #188ae2;
+    border-radius: 3px;
+}
+
+.progress_center .buttons .search_btn:hover {
+    background: #66AEE6 !important;
+}
+
+.progress_center .buttons .btn.add_btn, .mr_30 {
+    /*margin-right: 30px !important;*/
+}
+
+.progress_center .buttons button > img {
+    padding: 0 10px;
+}
+
+.ganttButtonBar {
+    padding: 12px 0;
+    height: 50px!important;
+    /*line-height: 50px;*/
+}
+
+.ganttButtonBar .buttons, .ganttButtonBar h1 {
+    display: block;
+    margin: 0 20px 0 10px;
+}
+
+.ganttButtonBar .search_input {
+    height: 26px;
+    border: 1px solid #E6E6E6;
+    width: 160px;
+    margin-left: 3%;
+    padding-left: 10px;
+}
+
+.ganttButtonBar .all_sel {
+    height: 27px;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #333333;
+    width: 120px;
+}
+
+.ganttButtonBar .buttons .display_btn {
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #666666;
+    padding: 4.5px 21px;
+    margin-top: -3px;
+}
+
+.ganttButtonBar .buttons .display_btn:hover {
+    background: #F2F2F2;
+    border: 1px solid #D8D8D8;
+    color: #666;
+}
+
+.lists .list_name {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #666666;
+}
+
+#myModal_8 .modal-footer {
+    margin-top: 30px;
+}
+
+#myModal_8 .col-xs-3 {
+    margin-bottom: 10px;
+}
+
+/*.taskEditRow:nth-of-type(odd) {*/
+/*background-color: #FAFAFA;*/
+/*}*/
+.taskEditRow.rowSelected td, .taskEditRow.rowSelected input, .taskEditRow.rowSelected th {
+    background-color: #F2F2F2;
+}
+
+/*.TH, .tableHeader{*/
+/*background-color: none;*/
+/*}*/
+table.gdfTable > tbody > tr:nth-child(even) td,
+table.gdfTable > tbody > tr:nth-child(even) input,
+table > tbody > tr:nth-child(even) th,
+table > thead > tr:nth-child(odd) th {
+    background-color: #FAFAFA;
+}
+
+table.gdfTable > tbody > tr:nth-child(odd) td,
+table.gdfTable > tbody > tr:nth-child(odd) input,
+table > tbody > tr:nth-child(odd) th,
+table > thead > tr:nth-child(even) th {
+    background-color: #FfFfFf;
+}
+
+.datepicker table > thead > tr:nth-child(odd) th {
+    background: #fff !important;
+}
+
+.taskEditRow.rowSelected td, .taskEditRow.rowSelected input {
+    background-color: #F2F2F2 !important;
+}
+
+.btn-primary:active:hover, .btn-primary.active:hover,
+.btn-primary:hover{
+    background-color: unset!important;
+    border-color: unset!important;
+}
+
+ul.filelist, ul.filelist2 {
+    color: #333;
+}
+
+ul.filelist2 {
+    padding: 0 5px;
+    margin-bottom: 0;
+}
+
+#fileList li {
+    list-style: none;
+}
+
+ul.filelist2 li {
+    padding: 10px;
+    list-style: none;
+    background: #fff;
+}
+
+.queueList2 .file_name, ul.filelist2 .file_name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+    display: inline-block;
+}
+.queueList2 .info .delImg,
+ .queueList2 .info .downImg{
+    margin-left: 10px;
+    display: none;
+    cursor: pointer;
+    float: left;
+}
+.queueList2 .original-files:hover .info .delImg,
+.queueList2 .original-files:hover .info .downImg{
+    display: block;
+}
+.queueList2 .thumbnail, ul.filelist2 .thumbnail {
+    border-radius: 0;
+    padding: 10px;
+    /*margin-top: 20px;*/
+    margin-bottom: 20px;
+}
+
+.queueList2 img.typeImg, ul.filelist2 .thumbnail > img.typeImg, ul.filelist2 .thumbnail > img.file_img {
+    height: 36px;
+    float: left;
+}
+
+.queueList2 .info, ul.filelist2 li .info {
+    float: left;
+}
+
+.progress_right .check_center > .row.files_box {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 20px;
+}
+
+.queueList2 .thumbnail:last-child {
+    margin-bottom: 0;
+}
+
+.queueList2 .original-files {
+    padding: 10px 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F7F7F7 !important;
+}
+
+#pre_task thead tr th:nth-child(3) {
+    width: 310px;
+}
+.lookFile_content{
+    height: 267px;
+    width: 100%;
+    border: 1px solid #E6E6E6;
+    overflow-y: scroll;
+}
+.lookFile_content .table>thead>tr>th{
+    border-bottom: 0px;
+}
+.lookFile_content th,td{
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    font-size: 14px!important;
+    text-align: center;
+    color: #666!important;
+    font-weight: unset!important;
+}
+.lookFile_content thead tr{
+    background-color: #FAFAFA;
+}
+.lookFile_content tbody tr:nth-child(odd){
+    background-color: #FfFfFf;
+}
+.lookFile_content tbody tr:nth-child(even){
+    background-color: #FAFAFA;
+}
+.row .deletePreTask{
+    background: #fff;
+    /*margin: 10px 0;*/
+    margin: 0px 0px 10px 0px;
+    padding: 5px 0;
+    cursor: default;
+}
+.deletePreTask div:nth-child(3){
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+.deletePreTask div img{
+    display: none;
+}
+.deletePreTask:hover img{
+    display: block;
+    cursor: pointer;
+}
+.deletePreTask div{
+    text-align: center;
+}
+.progress_right .table-bordered td:nth-child(2) span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 100%;
+}
+ .fixHead{
+    z-index: 10;
+}
+.gdfTable td, .gdfTable th,
+.ganttHead1 th, .ganttHead2 th{
+    color: black;
+}
+#workSpace{
+    width: 100%!important;
+}
+#deptM{
+    width: 98%;
+}
+.modal-footer .btn-success {
+    background: #00A63C !important;
+    border-radius: 3px;
+    border: none!important;
+    padding: 10px 14px;
+}
+.modal-footer .btn {
+    width: 100px;
+    padding: 9px 14px;
+}
+.modal-footer .btn-default {
+    margin-left: 20px !important;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    color: #999999;
+}
+.modal-footer .btn {
+    width: 100px;
+    padding: 9px 14px;
+}
+.modal-footer .btn-success:hover {
+    background: #66C98A !important;
+}
+#app-main>.wrap:nth-child(1){
+    /*padding-top: 1rem!important;*/
+}
+TH, .tableHeader{
+    font-weight: normal;
+    font-family: arial!important;
+    font-size: 14px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #eee;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #D3D4D3;
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff!important;
+}
+svg:not(:root){
+    overflow: visible!important;
+}
+#myModal_2 .modal-footer .btnSuccess {
+    background: #00A63C;
+    color: #fff;
+    border-radius: 3px;
+    border: none !important;
+    padding: 10px 14px;
+}
+
+#myModal_2 .modal-footer .btnSuccess:hover {
+    background: #66C98A;
+}
+
+#myModal_3 .modal-footer .btnSuccess {
+    background: #00A63C;
+    color: #fff;
+    border-radius: 3px;
+    border: none !important;
+    padding: 10px 14px;
+}
+
+#myModal_3 .modal-footer .btnSuccess:hover {
+    background: #66C98A;
+}
+
+.bgColor {
+    background-color: #F2F2F2 !important;
+}
+
+.btn-primary{
+    border-color: unset;
+}
+.fixHead{
+    z-index: 10!important;
+}
+.table-condensed thead th{
+ color: #333;
+}
+.table-condensed thead tr:nth-child(1) th:nth-child(2){
+    text-align: center;
+}
+body{
+    background-color: #edf0f5!important;
+}
+.app-content>.row{
+    margin: 0;
+}
+
+/*关联元素*/
+.related-center.look-modal .modal-body{
+    padding:0;
+}
+.related-center.look-modal .modal-body>div>div.row{
+    padding: 10px 0;
+}
+.related-center .borderStyle
+    /*.add-event-center .borderStyle,*/
+    /*.detail-event-center .borderStyle*/
+{
+    background: #FFFFFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    padding:0;
+    margin-bottom: 15px;
+    height: 220px;
+}
+.related-center .col-sm-1 img{
+    margin-top: 95px;
+    cursor: pointer;
+}
+
+.related-center .right .contentHeader {
+    margin: 0px;
+    background: #FAFAFA;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+    padding: 3px 0px;
+}
+
+.related-center >.modal-body  .right .right-content {
+    padding: 10px;
+    height: 81%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.related-center >.modal-body .right .contentCenter{
+    padding: 5px 0;
+}
+.look-modal .look-top{
+    /*height: 199px;*/
+    background: inherit;
+    background-color: rgba(242, 242, 242, 1);
+    border: none;
+    border-radius: 5px;
+    color: #999;
+    margin-top: 20px;
+}
+.look-modal .modal-body{
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 0 15px;
+}
+.look-modal .modal-body .question{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    height: 100px;
+    padding: 5px 10px;
+}
+/*.look-modal .modal-body .line{
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 15px;
+}*/
+.look-modal .modal-body>div>div.row{
+    margin-top: 0;
+    padding: 10px 15px;
+}
+.ztree li span.button{
+    box-shadow:unset!important;
+}
+body{
+    overflow-x: hidden!important;
+}
